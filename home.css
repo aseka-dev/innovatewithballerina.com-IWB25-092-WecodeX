@@ -1,0 +1,223 @@
+/* Reset & Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #ffffff;
+  color: #333333;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px;
+}
+
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  background-color: #ffffff;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.login {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.login-btn {
+  background: none;
+  background-color: #f6c1fb;
+  border: 2px solid #b000b5;
+  color: #a435c3;
+  padding: 10px 46px;
+  border-radius: 25px;
+  font-weight:bolder;
+  cursor: pointer;
+}
+
+/* Intro Section */
+.intro {
+  background-color: #f9f2ff;
+  text-align: center;
+  padding: 160px 16px 80px;
+}
+
+.logo {
+  font-size: 64px;
+  font-weight: 900;
+  margin-bottom: 16px;
+}
+
+.intro h2 {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+.subtitle {
+  font-size: 16px;
+  max-width: 700px;
+  margin: 0 auto 32px;
+}
+
+.register-btn {
+  background-color: #b000b5;
+  color: #ffffff;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+/* Features Section */
+.features {
+  padding: 64px 16px;
+  background-color: #ffffff;
+}
+
+.caption {
+  text-align: center;
+}
+
+.caption h3 {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.caption p {
+  font-size: 16px;
+  margin-bottom: 32px;
+}
+
+.feature-grid {
+  display: grid;
+  gap: 54px;
+  grid-template-columns: repeat(3, minmax(280px, 1fr));
+}
+
+.feature-card {
+  background-color: #f5e1fb;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 34px;
+  position: relative;
+  text-align: left;
+}
+
+.feature-card img {
+  width: 40px;
+  height: 40px;
+  background-color: #d6a8ff;
+  border-radius: 50%;
+  display: inline-block;
+  margin-bottom: 16px;
+}
+
+.card-info h4 {
+  margin-bottom: 8px;
+  font-size: 18px;
+}
+
+.card-info p {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.highlight {
+  background-color: #df86e5;
+  border: 2px solid #df86e5;
+}
+
+.signup-btn {
+  background-color: #fdeafc;
+  color: #9700a5;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 25px;
+  cursor: pointer;
+  margin-top: 12px;
+  
+}
+
+/* Footer */
+.footer {
+  background-color: #db5df2;
+  padding: 40px 16px 24px;
+}
+
+.footer-content {
+  display: grid;
+  gap: 32px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  margin-bottom: 24px;
+}
+
+.footer h2 {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+.footer h5 {
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+.footer ul {
+  list-style: none;
+}
+
+.footer a {
+  color: #4a004d;
+  font-size: 14px;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.social-icons a {
+  display: inline-block;
+  transition: transform 0.3s ease;
+  /*margin-right: 12px;*/
+}
+
+.social-icons img {
+  width: 20px;
+  height: 20px;
+  transition: filter 0.3s ease;
+}
+
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  border-top: 1px solid #d5a9ff;
+  padding-top: 16px;
+  font-size: 14px;
+}
+
+.footer-bottom p {
+  margin: 8px 0;
+}
+
+.footer-bottom a {
+  color: #4a004d;
+  font-weight: bold;
+}
