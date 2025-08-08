@@ -1,0 +1,274 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background-color: #fcecff;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #9700a5;
+  padding: 1rem 2rem;
+  color: white;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+nav a {
+  color: white;
+  margin: 0 1rem;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.user-icon {
+  font-size: 1.8rem;
+  margin-left: 1rem;
+}
+
+
+
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: 2rem 1rem 1rem;
+  
+}
+
+.hero-image {
+  position: relative;
+  height: 200px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+.hero-image::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://media.licdn.com/dms/image/v2/D4D12AQEgczMQGRAxZA/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1678085299597?e=2147483647&v=beta&t=U8_-4DALgh7g-vzBDAZJTlkeZ6Hi-dUMipCcGJduMVA");
+  background-size: cover; /* fills the section */
+  background-position: center 40%;
+  opacity: 0.7; /* transparency only on image */
+  z-index: -1;
+  
+}
+/*
+.hero-image {
+  background-image: url("https://img.freepik.com/free-vector/happy-tiny-people-female-teens-pillow-fight-bedroom-slumber-party-pajama-party-friends-sleepover-slumber-night-party-concept_335657-629.jpg?w=360");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 200px;
+  margin-bottom: 1rem;
+}*/
+
+.hero h1 {
+  font-size: 2rem;
+  color: #2c003e;
+  margin-bottom: 1rem;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  background-color: #9700a5;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #750080;
+}
+
+/* Chore Section */
+.chore-section {
+  padding: 2rem 1rem;
+  text-align: center;
+  background-color: #d62fdd;
+}
+
+.chore-section h2 {
+  font-size: 1.8rem;
+  color: #2c003e;
+  margin-bottom: 2rem;
+}
+
+.chore-grid {
+  display: grid;
+  /*grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));*/
+  grid-template-columns: repeat(3, minmax(280px, 1fr));
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.chore-card {
+  background-color: #600068;
+  color: white;
+  border-radius: 15px;
+  padding: 1rem;
+  position: relative;
+  text-align: left;
+}
+
+.chore-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chore-header h3 {
+  font-size: 1.1rem;
+}
+
+.avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.status {
+  font-size: 0.9rem;
+  margin: 0.5rem 0;
+}
+
+.status.in-progress {
+  color: gold;
+}
+
+.status.completed {
+  color: lightgreen;
+}
+
+.due {
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+.action-dropdown {
+  width: 100%;
+  padding: 0.4rem;
+  border-radius: 8px;
+  border: none;
+  font-size: 0.9rem;
+}
+
+/* View More */
+.view-more-container {
+  margin-top: 2rem;
+}
+
+.view-more-btn {
+  background-color: #d62fdd;
+  color: white;
+  padding: 0.7rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.view-more-btn:hover {
+  background-color: #a500ae;
+}
+
+.bills h2 {
+  font-size: 1.8rem;
+  color: #2c003e;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+
+
+/* Footer */
+.footer {
+  background-color: #db5df2;
+  padding: 40px 16px 24px;
+}
+
+.footer-content {
+  display: grid;
+  gap: 32px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  margin-bottom: 24px;
+}
+
+.footer h2 {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+.footer h5 {
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+.footer ul {
+  list-style: none;
+}
+
+.footer a {
+  color: #4a004d;
+  font-size: 14px;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.social-icons a {
+  display: inline-block;
+  transition: transform 0.3s ease;
+  /*margin-right: 12px;*/
+}
+
+.social-icons img {
+  width: 20px;
+  height: 20px;
+  transition: filter 0.3s ease;
+}
+
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  border-top: 1px solid #d5a9ff;
+  padding-top: 16px;
+  font-size: 14px;
+}
+
+.footer-bottom p {
+  margin: 8px 0;
+}
+
+.footer-bottom a {
+  color: #4a004d;
+  font-weight: bold;
+}
