@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>RoomSync – Room 1</title>
-  <link rel="stylesheet" href="room.css" />
+  <link rel="stylesheet" href="roomtest.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 </head>
 <body>
@@ -30,101 +30,202 @@
   </section>
 
   <!-- Chore Board -->
-  <section class="chore-section">
-    <h2>Chore Board</h2>
-    <div class="chore-grid">
-      <!-- Card 1 -->
-      <div class="chore-card">
-        <div class="chore-header">
-          <h3>Clean the bathroom</h3>
-          <img src="" alt="avatar" class="avatar" />
-        </div>
-        <p class="status in-progress">🟡 In Progress</p>
-        <p class="due">Due in 2 days</p>
-        <select class="action-dropdown">
-          <option>Click to Complete</option>
-        </select>
-      </div>
+  <!-- Chore Board -->
+<section class="chore-section" id="choreBoard">
+  <h2 class="section-header">Chore Board</h2>
 
-      <!-- Card 2 -->
-      <div class="chore-card">
-        <div class="chore-header">
-          <h3>Sweep the floor</h3>
-          <img src="" alt="avatar" class="avatar" />
-        </div>
-        <p class="status in-progress">🟡 In Progress</p>
-        <p class="due">Due in 1 day</p>
-        <select class="action-dropdown">
-          <option>Click to Complete</option>
-        </select>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="chore-card">
-        <div class="chore-header">
-          <h3>Clean the kitchen</h3>
-          <img src="" alt="avatar" class="avatar" />
-        </div>
-        <p class="status in-progress">🟡 In Progress</p>
-        <p class="due">Due in 2 days</p>
-        <select class="action-dropdown">
-          <option>Click to Complete</option>
-        </select>
-      </div>
-
-      <!-- Card 4 -->
-      <div class="chore-card">
-        <div class="chore-header">
-          <h3>Take out trash</h3>
-          <img src="" alt="avatar" class="avatar" />
-        </div>
-        <p class="status in-progress">🟡 In Progress</p>
-        <p class="due">Due in 1 day</p>
-        <select class="action-dropdown">
-          <option>Click to Complete</option>
-        </select>
-      </div>
-
-      <!-- Card 5 -->
-      <div class="chore-card">
-        <div class="chore-header">
-          <h3>Clean the bathroom</h3>
-          <img src="" alt="avatar" class="avatar" />
-        </div>
-        <p class="status in-progress">🟡 In Progress</p>
-        <p class="due">Due Today</p>
-        <select class="action-dropdown">
-          <option>Click to Complete</option>
-        </select>
-      </div>
-
-      <!-- Card 6 -->
-      <div class="chore-card">
-        <div class="chore-header">
-          <h3>Clean the bathroom</h3>
-          <img src="" alt="avatar" class="avatar" />
-        </div>
-        <p class="status completed">🟢 Completed</p>
-        <p class="due">Done 1 day ago</p>
-        <select class="action-dropdown">
-          <option>Click to Complete</option>
-        </select>
-      </div>
+  <div class="chore-toolbar">
+    <div class="toolbar-left">
+      <label for="statusFilter">Filter:</label>
+      <select id="statusFilter" class="filter-select" aria-label="Filter by status">
+        <option value="all" selected>All</option>
+        <option value="in-progress">In Progress</option>
+        <option value="completed">Completed</option>
+        <option value="not-completed">Not Completed</option>
+      </select>
     </div>
+    <button class="btn-primary" id="addChoreBtn" type="button"> + Add Chore</button>
+  </div>
+
+  <div class="chore-grid">
+    <!-- Card 1 -->
+    <article class="chore-card" data-id="1">
+      <div class="chore-header">
+        <h3 class="chore-title">Clean the bathroom</h3>
+        <img src="" alt="Assigned to Alice" class="avatar" />
+      </div>
+      <p class="status in-progress">🟡 In Progress</p>
+      <p class="due">Due in 2 days</p>
+      <select class="action-dropdown" aria-label="Update status">
+        <option value="in-progress" selected>In Progress</option>
+        <option value="completed">Completed</option>
+        <option value="not-completed">Not Completed</option>
+      </select>
+    </article>
+
+    <!-- Card 2 -->
+    <article class="chore-card" data-id="2">
+      <div class="chore-header">
+        <h3 class="chore-title">Sweep the floor</h3>
+        <img src="" alt="Assigned to Bob" class="avatar" />
+      </div>
+      <p class="status in-progress">🟡 In Progress</p>
+      <p class="due">Due in 1 day</p>
+      <select class="action-dropdown" aria-label="Update status">
+        <option value="in-progress" selected>In Progress</option>
+        <option value="completed">Completed</option>
+        <option value="not-completed">Not Completed</option>
+      </select>
+    </article>
+
+    <!-- Card 3 -->
+    <article class="chore-card" data-id="3">
+      <div class="chore-header">
+        <h3 class="chore-title">Clean the kitchen</h3>
+        <img src="" alt="Assigned to Charlie" class="avatar" />
+      </div>
+      <p class="status not-completed">🔴 Not Completed</p>
+      <p class="due">Due Today</p>
+      <select class="action-dropdown" aria-label="Update status">
+        <option value="in-progress">In Progress</option>
+        <option value="completed">Completed</option>
+        <option value="not-completed" selected>Not Completed</option>
+      </select>
+    </article>
+
+    <!-- Card 4 -->
+    <article class="chore-card" data-id="4">
+      <div class="chore-header">
+        <h3 class="chore-title">Take out trash</h3>
+        <img src="" alt="Assigned to Dana" class="avatar" />
+      </div>
+      <p class="status completed">🟢 Completed</p>
+      <p class="due">Done 1 day ago</p>
+      <select class="action-dropdown" aria-label="Update status">
+        <option value="in-progress">In Progress</option>
+        <option value="completed" selected>Completed</option>
+        <option value="not-completed">Not Completed</option>
+      </select>
+    </article>
+</div>
 
 
-    <div class="view-more-container">
-      <button class="view-more-btn">View More</button>
+
+  <div class="view-more-container">
+    <button class="view-more-btn" type="button">View More</button>
+  </div>
+</section>
+
+
+  <!-- Expenses & Bills section -->
+  <section class="expenses-section">
+    <h2 class="section-header">Expenses & Bills</h2>
+    
+    <div class="expenses-container">
+      <!-- Left: Summary card -->
+      <div class="summary-card">
+        <h3>Summary</h3>
+        <div class="summary-items">
+          <div class="summary-item">
+            <span>You owe:</span>
+            <span class="amount owed">Rs. 0.00</span>
+          </div>
+          <div class="summary-item">
+            <span>Total:</span>
+            <span class="amount">Rs. 5,600.00</span>
+          </div>
+          <div class="summary-item">
+            <span>Your Share:</span>
+            <span class="amount">Rs. 1,900.00</span>
+          </div>
+        </div>
+        
+        <!-- Action buttons below summary -->
+        <div class="summary-actions">
+          <button class="btn-primary"> + Add Expense</button>
+          <button class="btn-secondary">Download Receipt</button>
+        </div>
+      </div>
+
+      <!-- Right: Expenses table -->
+      <div class="table-container">
+        <table class="expenses-table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Description</th>
+              <th>Amount</th>
+              <th>Paid By</th>
+              <th>Split Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Apr 6</td>
+              <td>Groceries</td>
+              <td class="amount-cell">Rs. 8,200</td>
+              <td class="payer-cell">Alice</td>
+              <td class="split-cell">Rs. 2,733.33</td>
+            </tr>
+            <tr>
+              <td>Apr 9</td>
+              <td>Utilities</td>
+              <td class="amount-cell">Rs. 3,600</td>
+              <td class="payer-cell">Bob</td>
+              <td class="split-cell">Rs. 1,200.00</td>
+            </tr>
+            <tr>
+              <td>Apr 12</td>
+              <td>Internet</td>
+              <td class="amount-cell">Rs. 2,400</td>
+              <td class="payer-cell">Charlie</td>
+              <td class="split-cell">Rs. 800.00</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </section>
 
-  <!-- Expenses and Bills Section -->
-  <section class="bills">
+  <!-- Roommate Calendar Section -->
+ <!-- Roommate Calendar Section -->
+<section class="calendar-section">
+  <h2 class="section-header">Roommate Calendar</h2>
+  
+  <div class="calendar-container">
+    <!-- Calendar Grid -->
+    <div class="calendar-grid">
+      <div class="calendar-header">
+        <button class="calendar-nav-btn" id="prevMonth"><i class="fas fa-chevron-left"></i></button>
+        <h3 id="currentMonth">April 2025</h3>
+        <button class="calendar-nav-btn" id="nextMonth"><i class="fas fa-chevron-right"></i></button>
+      </div>
+      
+      <div class="calendar-days">
+        <div class="day-header">Sun</div>
+        <div class="day-header">Mon</div>
+        <div class="day-header">Tue</div>
+        <div class="day-header">Wed</div>
+        <div class="day-header">Thu</div>
+        <div class="day-header">Fri</div>
+        <div class="day-header">Sat</div>
+      </div>
+      
+      <div class="calendar-dates" id="calendarDates">
+        <!-- Calendar dates will be generated by JavaScript -->
+      </div>
+    </div>
     
-    <h2>Expenses and Bills</h2>
-    
-  </section>
-
+    <!-- Task Details Panel -->
+    <div class="task-details-panel">
+      <h3>Tasks for <span id="selected-date">Select a date</span></h3>
+      <div class="task-list" id="task-list">
+        <p class="no-tasks">Select a date to view tasks</p>
+      </div>
+      <button class="btn-primary add-task-btn"> + Add New Task</button>
+    </div>
+  </div>
+</section>
 
   <footer class="footer">
     <div class="container footer-content">
@@ -163,8 +264,7 @@
     </div>
   </footer>
 
-
-
-
+  <script src="roomtest.js"></script>
+   
 </body>
 </html>
