@@ -1,36 +1,38 @@
-<!DOCTYPE html>
+           <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>RoomSync – Room 1</title>
-  <link rel="stylesheet" href="roomtest.css" />
+  <link rel="stylesheet" href="room.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 </head>
 <body>
   <!-- Navbar -->
   <header class="navbar">
-    <div class="logo">RoomSync</div>
+    <div class="logo"><a href = "home.html"><span>RoomSync</span></a></div>
     <nav>
-      <a href="#">Home</a>
-      <a href="#">Contact us</a>
+      <a href="home.html">Home</a>
+      <a href="task.html">Chores</a>
+      <a href="settings.html">Settings</a>
       <i class="fas fa-user-circle user-icon"></i>
     </nav>
   </header>
+
 
   <!-- Hero Section -->
   <section class="hero">
     <div class="hero-image"></div>
     <h1>Welcome to Room1 !</h1>
     <div class="hero-buttons">
-      <button class="btn-primary">Chore Board</button>
-      <button class="btn-primary">Expenses & Bills</button>
-      <button class="btn-primary">Roommate Calendar</button>
+      <button class="btn-primary" onclick="scrollToSection('choreBoard')">Chore Board</button>
+      <button class="btn-primary" onclick="scrollToSection('expenses')">Expenses & Bills</button>
+      <button class="btn-primary" onclick="scrollToSection('calendar')">Roommate Calendar</button>
     </div>
-  </section>
+</section>
 
   <!-- Chore Board -->
-  <!-- Chore Board -->
+ 
 <section class="chore-section" id="choreBoard">
   <h2 class="section-header">Chore Board</h2>
 
@@ -39,86 +41,31 @@
       <label for="statusFilter">Filter:</label>
       <select id="statusFilter" class="filter-select" aria-label="Filter by status">
         <option value="all" selected>All</option>
-        <option value="in-progress">In Progress</option>
+        <option value="pending">Pending</option>
         <option value="completed">Completed</option>
-        <option value="not-completed">Not Completed</option>
+        <option value="overdue">Overdue</option>
       </select>
     </div>
-    <button class="btn-primary" id="addChoreBtn" type="button"> + Add Chore</button>
+    <button class="btn-primary" id="addChoreBtn" type="button">
+      <a href="choretest.html">+ Add Chore</a>
+    </button>
   </div>
 
-  <div class="chore-grid">
-    <!-- Card 1 -->
-    <article class="chore-card" data-id="1">
-      <div class="chore-header">
-        <h3 class="chore-title">Clean the bathroom</h3>
-        <img src="" alt="Assigned to Alice" class="avatar" />
-      </div>
-      <p class="status in-progress">🟡 In Progress</p>
-      <p class="due">Due in 2 days</p>
-      <select class="action-dropdown" aria-label="Update status">
-        <option value="in-progress" selected>In Progress</option>
-        <option value="completed">Completed</option>
-        <option value="not-completed">Not Completed</option>
-      </select>
-    </article>
-
-    <!-- Card 2 -->
-    <article class="chore-card" data-id="2">
-      <div class="chore-header">
-        <h3 class="chore-title">Sweep the floor</h3>
-        <img src="" alt="Assigned to Bob" class="avatar" />
-      </div>
-      <p class="status in-progress">🟡 In Progress</p>
-      <p class="due">Due in 1 day</p>
-      <select class="action-dropdown" aria-label="Update status">
-        <option value="in-progress" selected>In Progress</option>
-        <option value="completed">Completed</option>
-        <option value="not-completed">Not Completed</option>
-      </select>
-    </article>
-
-    <!-- Card 3 -->
-    <article class="chore-card" data-id="3">
-      <div class="chore-header">
-        <h3 class="chore-title">Clean the kitchen</h3>
-        <img src="" alt="Assigned to Charlie" class="avatar" />
-      </div>
-      <p class="status not-completed">🔴 Not Completed</p>
-      <p class="due">Due Today</p>
-      <select class="action-dropdown" aria-label="Update status">
-        <option value="in-progress">In Progress</option>
-        <option value="completed">Completed</option>
-        <option value="not-completed" selected>Not Completed</option>
-      </select>
-    </article>
-
-    <!-- Card 4 -->
-    <article class="chore-card" data-id="4">
-      <div class="chore-header">
-        <h3 class="chore-title">Take out trash</h3>
-        <img src="" alt="Assigned to Dana" class="avatar" />
-      </div>
-      <p class="status completed">🟢 Completed</p>
-      <p class="due">Done 1 day ago</p>
-      <select class="action-dropdown" aria-label="Update status">
-        <option value="in-progress">In Progress</option>
-        <option value="completed" selected>Completed</option>
-        <option value="not-completed">Not Completed</option>
-      </select>
-    </article>
-</div>
-
-
+  <div class="chore-grid" id="choreGrid">
+    <!-- Chores will be dynamically populated from the chore management system -->
+    <div class="loading-chores">Loading chores...</div>
+  </div>
 
   <div class="view-more-container">
-    <button class="view-more-btn" type="button">View More</button>
+    <button class="view-more-btn" type="button">
+      <a href="choretest.html">View More</a>
+    </button>
   </div>
 </section>
 
 
   <!-- Expenses & Bills section -->
-  <section class="expenses-section">
+  <section class="expenses-section" id="expenses">
     <h2 class="section-header">Expenses & Bills</h2>
     
     <div class="expenses-container">
@@ -142,8 +89,12 @@
         
         <!-- Action buttons below summary -->
         <div class="summary-actions">
-          <button class="btn-primary"> + Add Expense</button>
-          <button class="btn-secondary">Download Receipt</button>
+          <button class="btn-primary">
+            <a href="expense.html#add-expense">+ Add Expense</a>
+          </button>
+          <button class="btn-secondary">
+            <a href="expense.html#view-expenses">View All</a>
+          </button>
         </div>
       </div>
 
@@ -188,8 +139,8 @@
   </section>
 
   <!-- Roommate Calendar Section -->
- <!-- Roommate Calendar Section -->
-<section class="calendar-section">
+ 
+<section class="calendar-section" id="calendar">
   <h2 class="section-header">Roommate Calendar</h2>
   
   <div class="calendar-container">
@@ -222,7 +173,11 @@
       <div class="task-list" id="task-list">
         <p class="no-tasks">Select a date to view tasks</p>
       </div>
-      <button class="btn-primary add-task-btn"> + Add New Task</button>
+      <button class="btn-primary add-task-btn">
+        <div class="addtask">
+          <a href="task.html#add-chore">+ Add New Task</a>
+        </div>
+      </button>
     </div>
   </div>
 </section>
@@ -264,7 +219,7 @@
     </div>
   </footer>
 
-  <script src="roomtest.js"></script>
+  <script src="room.js"></script>
    
 </body>
-</html>
+</html> 
