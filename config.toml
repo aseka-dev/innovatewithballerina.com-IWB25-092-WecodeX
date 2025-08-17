@@ -1,0 +1,11 @@
+# Database Configuration for RoomSync
+port = 3306
+host = "localhost"
+database = "roomsync"
+user = "root"
+password = "0123"
+connectionOptions = {
+    useSSL: false,
+    allowPublicKeyRetrieval: true
+}
+
