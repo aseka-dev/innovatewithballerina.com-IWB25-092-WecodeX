@@ -50,7 +50,7 @@ a {
 }
 
 .nav-brand h2 {
-  color:#4a004d;
+  color:#9700a5;
  
   font-size: 24px;
   font-weight: 700;
@@ -133,7 +133,8 @@ a {
   background-image: url('https://tribestays.com/wp-content/uploads/2020/10/2020-02-03-RoommateLiving2-01-min-770x513-1.png');
   background-size: cover;
   background-position: center 25%;
-  opacity: 0.4;
+  opacity: 0.46;
+
   z-index: 1;
   transition: opacity 0.3s ease;
 }
