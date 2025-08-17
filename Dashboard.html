@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoomSync Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h1><a href="home.html" style="color: white; text-decoration: none;">RoomSync</a></h1>
+            </div>
+            <div class="nav-menu">
+                <a href="home.html" class="nav-link">Home</a>
+                <a href="room.html" class="nav-link">Rooms</a>
+                <a href="task.html" class="nav-link">Tasks</a>
+                <a href="expense.html" class="nav-link">Expenses</a>
+                <a href="settings.html" class="nav-link">Settings</a>
+            </div>
+            <div class="nav-actions">
+                <button class="nav-icon-btn" id="notificationBtn" title="Notifications">
+                    <i class="fas fa-bell"></i>
+                </button>
+                <button class="nav-icon-btn" id="profileBtn" title="Profile">
+                    <i class="fas fa-user"></i>
+                </button>
+                <button class="nav-icon-btn" id="logoutBtn" title="Logout">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Greeting Section -->
+        <div class="greeting-section">
+            <h1 class="greeting">Hello Hiruni!</h1>
+        </div>
+
+        <!-- Room Section -->
+        <div class="room-section">
+            <div class="room-tabs">
+                <div class="room-tab active" data-room="1">
+                    <i class="fas fa-home"></i>
+                    <span>Room 1</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Cards Section -->
+        <div class="cards-container">
+            <!-- Task Card (Left Side) -->
+            <div class="task-card">
+                <div class="card-header">
+                    <h3>My chores</h3>
+                    <button class="edit-btn" id="editChoresBtn" title="Edit Chores">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                </div>
+                <div class="tasks-list">
+                    <div class="task-item" data-room="1">
+                        <div class="task-content">
+                            <h4>Take out trash</h4>
+                            <p>Please empty the trash can and take it to the room. Doesn't repeat.</p>
+                            <span class="task-status">In Progress</span>
+                        </div>
+                        <div class="task-actions">
+                            <button class="task-check-btn" title="Mark Complete">
+                                <i class="fas fa-check"></i>
+                            </button>
+                            <button class="task-edit-btn" title="Edit Task">
+                                <i class="fas fa-pencil-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="task-item" data-room="1">
+                        <div class="task-content">
+                            <h4>Mop the floor</h4>
+                            <p>Please mop every room to remove dust under the table.</p>
+                            <span class="task-status">In Progress</span>
+                        </div>
+                        <div class="task-actions">
+                            <button class="task-check-btn" title="Mark Complete">
+                                <i class="fas fa-check"></i>
+                            </button>
+                            <button class="task-edit-btn" title="Edit Task">
+                                <i class="fas fa-pencil-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Expense Card (Right Side) -->
+            <div class="expense-card">
+                <div class="card-header">
+                    <h3>You owe</h3>
+                    <button class="edit-btn" id="editExpenseBtn" title="Edit Expenses">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                </div>
+                <div class="expense-content">
+                    <div class="expense-main">
+                        <div class="expense-amount">
+                            <span class="amount">Rs. 0.00</span>
+                            <span class="amount-label">Amount Due</span>
+                        </div>
+                        <div class="expense-icon">
+                            <i class="fas fa-coins"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="expense-breakdown">
+                        <div class="expense-item">
+                            <div class="expense-item-icon">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                            <div class="expense-item-details">
+                                <span class="expense-item-label">Total Spending</span>
+                                <span class="expense-item-value">Rs. 1,840.00</span>
+                            </div>
+                        </div>
+                        <div class="expense-item">
+                            <div class="expense-item-icon">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="expense-item-details">
+                                <span class="expense-item-label">Your Expenses</span>
+                                <span class="expense-item-value">Rs. 284.00</span>
+                            </div>
+                        </div>
+                        <div class="expense-item">
+                            <div class="expense-item-icon">
+                                <i class="fas fa-hand-holding-usd"></i>
+                            </div>
+                            <div class="expense-item-details">
+                                <span class="expense-item-label">Shared Expenses</span>
+                                <span class="expense-item-value">Rs. 1,556.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="expense-actions">
+                        <button class="expense-action-btn" id="moneyBtn" title="View Details">
+                            <i class="fas fa-chart-pie"></i>
+                            <span>View Details</span>
+                        </button>
+                        <button class="expense-action-btn" id="addExpenseBtn" title="Add Expense">
+                            <i class="fas fa-plus"></i>
+                            <span>Add Expense</span>
+                        </button>
+                    </div>
+                    
+                    <button class="room-btn" id="goToRoomBtn">
+                        <span>Go to your room</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Room Members Section -->
+        <div class="room-members-section">
+            <div class="members-header">
+                <h3>Room Members</h3>
+                <span class="member-count">4 members</span>
+            </div>
+            <div class="members-grid">
+                <div class="member-avatar active" title="Hiruni (You)">
+                    <div class="avatar-image">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <span class="member-name">Hiruni</span>
+                    <span class="member-status">You</span>
+                </div>
+                <div class="member-avatar" title="Sarah">
+                    <div class="avatar-image">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <span class="member-name">Sarah</span>
+                    <span class="member-status">Online</span>
+                </div>
+                <div class="member-avatar" title="Mike">
+                    <div class="avatar-image">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <span class="member-name">Mike</span>
+                    <span class="member-status">Online</span>
+                </div>
+                <div class="member-avatar" title="Emma">
+                    <div class="avatar-image">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <span class="member-name">Emma</span>
+                    <span class="member-status">Away</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Stats -->
+        <div class="footer-stats">
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="stat-content">
+                        <span class="stat-label">Leaderboard</span>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="stat-content">
+                        <span class="stat-label">My Score</span>
+                        <span class="stat-value" data-room="1">23 / 9</span>
+                        <span class="stat-value" data-room="2" style="display: none;">239</span>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <div class="stat-content">
+                        <span class="stat-label">Top Score</span>
+                        <span class="stat-value">340</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Floating Add Button -->
+        <button class="floating-add-btn" id="addTaskBtn" title="Add New Task">
+            <i class="fas fa-plus"></i>
+        </button>
+    </main>
+
+    <!-- Notification Panel -->
+    <div class="notification-panel" id="notificationPanel" style="display: none;">
+        <div class="notification-header">
+            <h3>Notifications</h3>
+            <button class="close-notification" id="closeNotification">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="notification-list">
+            <div class="notification-item">
+                <i class="fas fa-info-circle"></i>
+                <span>Welcome to RoomSync Dashboard!</span>
+            </div>
+            <div class="notification-item">
+                <i class="fas fa-tasks"></i>
+                <span>You have 2 pending tasks</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Profile Panel -->
+    <div class="profile-panel" id="profilePanel" style="display: none;">
+        <div class="profile-header">
+            <h3>Profile</h3>
+            <button class="close-profile" id="closeProfile">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="profile-content">
+            <div class="profile-avatar">
+                <i class="fas fa-user-circle"></i>
+            </div>
+            <h4>Hiruni</h4>
+            <p>Room 1 Member</p>
+            <div class="profile-actions">
+                <button class="profile-btn" id="editProfileBtn">
+                    <i class="fas fa-edit"></i> Edit Profile
+                </button>
+                <button class="profile-btn" id="changePasswordBtn">
+                    <i class="fas fa-key"></i> Change Password
+                </button>
+                <button class="profile-btn" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
