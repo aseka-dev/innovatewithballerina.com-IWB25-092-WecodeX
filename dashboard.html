@@ -9,31 +9,37 @@
 </head>
 <body>
     <!-- Navigation Bar -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-brand">
-                <h1><a href="home.html" style="color: white; text-decoration: none;">RoomSync</a></h1>
-            </div>
-            <div class="nav-menu">
-                <a href="home.html" class="nav-link">Home</a>
-                <a href="room.html" class="nav-link">Rooms</a>
-                <a href="task.html" class="nav-link">Tasks</a>
-                <a href="expense.html" class="nav-link">Expenses</a>
-                <a href="settings.html" class="nav-link">Settings</a>
-            </div>
-            <div class="nav-actions">
-                <button class="nav-icon-btn" id="notificationBtn" title="Notifications">
-                    <i class="fas fa-bell"></i>
-                </button>
-                <button class="nav-icon-btn" id="profileBtn" title="Profile">
-                    <i class="fas fa-user"></i>
-                </button>
-                <button class="nav-icon-btn" id="logoutBtn" title="Logout">
-                    <i class="fas fa-sign-out-alt"></i>
-                </button>
-            </div>
-        </div>
-    </nav>
+    
+<header class="navbar">
+  <div class="logo">
+    <a href="home.html"><span>RoomSync</span></a>
+  </div>
+
+  <nav>
+    <a href="home.html">Home</a>
+    <a href="task.html">Chores</a>
+    <a href="expense.html">Expenses</a>
+    
+
+    <!-- Notification -->
+    <a href="#" class="icon-btn"><i class="fas fa-bell"></i></a>
+
+    <!-- Profile Dropdown -->
+    <div class="profile-dropdown">
+      <i class="fas fa-user-circle user-icon" id="profileIcon"></i>
+      <div class="dropdown-menu" id="dropdownMenu">
+        <a href="settings.html">My Profile</a>
+        <a href="settings.html">Settings</a>
+        <a href="home.html">Logout</a>
+        <a href="login.html">Sign in Room</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+            
+        
+    
 
     <!-- Main Content -->
     <main class="main-content">
@@ -288,6 +294,44 @@
             </div>
         </div>
     </div>
+
+
+    <footer class="footer">
+    <div class="container footer-content">
+      <div>
+        <h1>RoomSync</h1>
+        <h3>Follow Us</h3>
+        <div class="social-icons">
+          <a href="#"><img src="https://duplicatorstore.com/wp-content/uploads/2022/02/FI_284882215_asaArtwork_featured-2.jpg" alt="Facebook"></a>
+          <a href="#"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRokEYt0yyh6uNDKL8uksVLlhZ35laKNQgZ9g&s" alt="LinkedIn"></a>
+          <a href="#"><img src="https://2235233.fs1.hubspotusercontent-na1.net/hubfs/2235233/blog-import/2022/07-22-Jul/every-social-media-logo-and-icon-in-one-handy-place-instagram.png" alt="Instagram"></a>
+          <a href="#"><img src="https://cdn.pixabay.com/photo/2021/12/27/10/50/telegram-6896827_1280.png" alt="Telegram"></a>
+        </div>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Customer Service</h5>
+        <ul>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Use</a></li>
+          <li><a href="#">FAQs</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 RoomSync. All Rights Reserved.</p>
+      <p><a href="#">Privacy|Terms of Services</a></p>
+    </div>
+  </footer>
 
     <script src="dashboard.js"></script>
 </body>
