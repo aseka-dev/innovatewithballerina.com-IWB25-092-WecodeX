@@ -18,7 +18,7 @@ final mysql:Client dbClient = check new(
 //========== USER OPERATIONS ==========
  function insertUser(User entry) returns sql:ExecutionResult|error {
     User {id, name, email, contactNumber,password} = entry;
-    sql:ParameterizedQuery insertQuery = `INSERT INTO Users (id, name, email, contactNumber,password) VALUES (
+    sql:ParameterizedQuery insertQuery = `INSERT INTO Users (id, name, email, contact_Number,password) VALUES (
                                             ${id}, ${name}, ${email}, ${contactNumber}, ${password})`;
     return dbClient->execute(insertQuery);
 }
@@ -46,9 +46,13 @@ function selectAllUsers() returns User[]|error {
 // ========== ROOM OPERATIONS ==========
 
  function insertRoom(Room entry) returns sql:ExecutionResult|error {
-    Room {roomCode, name, ownerId, roommateIds} = entry;
-    sql:ParameterizedQuery insertQuery = `INSERT INTO Rooms (roomCode, name, ownerId, roommateIds) VALUES (
-                                            ${roomCode}, ${name}, ${ownerId}, ${roommateIds})`;
+    Room {id, roomCode, name, ownerId, roommateIds} = entry;
+    
+    json roommateIdsJson = <json>roommateIds;
+    string roommateIdsJsonString = roommateIdsJson.toJsonString();
+
+    sql:ParameterizedQuery insertQuery = `INSERT INTO Rooms (id, room_Code, name, owner_Id, roommate_Ids) VALUES (
+                                            ${id}, ${roomCode}, ${name}, ${ownerId}, ${roommateIdsJsonString})`;
     return dbClient->execute(insertQuery);
 }
 
@@ -119,18 +123,23 @@ function selectAllUsers() returns User[]|error {
          
     return dbClient->execute(updateQuery);
 }
-
-
  function deleteRoommate(string id) returns sql:ExecutionResult|error {
     sql:ParameterizedQuery deleteQuery = `DELETE FROM Roommates WHERE id = ${id}`;
     return dbClient->execute(deleteQuery);
+}
+// ========== Task OPERATIONS ==========
+
+function insertTask(Task entry) returns  sql:ExecutionResult|error {
+    Task {id,title,description,category} = entry;
+    sql:ParameterizedQuery insertQuery = `INSERT INTO Tasks (id, title, description,category) VALUES (
+                                            ${id}, ${title},${description},${category})`;
+    return dbClient->execute(insertQuery);
 }
 
 // ========== ROTA OPERATIONS ==========
 
  function insertRota(RotaTask entry) returns sql:ExecutionResult|error {
-    RotaTask {id, taskName, roommateIds, startDate, frequency, day, history, currentIndex, currentAssignee} = entry;
-
+    RotaTask {id, taskId, roommateIds, startDate, frequency, day, history, currentIndex, currentAssignee} = entry;
    
     json historyJson = <json>history;
     string historyJsonString = historyJson.toJsonString();
@@ -138,9 +147,8 @@ function selectAllUsers() returns User[]|error {
     json roommateJson = <json>roommateIds;
     string roommateJsonString = roommateJson.toJsonString();
 
-
-    sql:ParameterizedQuery insertQuery = `INSERT INTO RotaTasks (id, taskName, roommateIds, startDate, frequency, day, history, currentIndex, currentAssignee) VALUES (
-                                            ${id}, ${taskName}, ${roommateJsonString}, ${startDate}, ${frequency}, ${day}, ${historyJsonString}, ${currentIndex}, ${currentAssignee})`;
+    sql:ParameterizedQuery insertQuery = `INSERT INTO RotaTasks (id, task_id, roommateIds, startDate, frequency, day, history, currentIndex, currentAssignee) VALUES (
+                                            ${id}, ${taskId}, ${roommateJsonString}, ${startDate}, ${frequency}, ${day}, ${historyJsonString}, ${currentIndex}, ${currentAssignee})`;
     return dbClient->execute(insertQuery);
 }
 
@@ -162,17 +170,12 @@ function selectAllUsers() returns User[]|error {
 }
 
  function updateRota(string id, RotaTaskInsert data) returns sql:ExecutionResult|error {
-    RotaTaskInsert {taskName, roommateIds, startDate, frequency, day, history} = data;
+    RotaTaskInsert {taskId, startDate, frequency, day, history} = data;
 
     json historyJson = <json>history;
     string historyJsonString = historyJson.toJsonString();
 
-    json roommateJson = <json>roommateIds;
-    string roommateJsonString = roommateJson.toJsonString();
- 
-    //there are toJson converts to json,tostring converts array to string
-
-    sql:ParameterizedQuery updateQuery = `UPDATE RotaTasks SET taskName = ${taskName}, roommateIds = ${roommateJsonString}, 
+    sql:ParameterizedQuery updateQuery = `UPDATE RotaTasks SET task_id = ${taskId}, 
                                             startDate = ${startDate}, frequency = ${frequency}, day = ${day}, 
                                             history = ${historyJsonString} WHERE id = ${id}`;
     return dbClient->execute(updateQuery);
@@ -192,9 +195,9 @@ function selectAllUsers() returns User[]|error {
 // ========== ASSIGNMENT OPERATIONS ==========
 
  function insertAssignment(Assignment entry) returns sql:ExecutionResult|error {
-    Assignment {id, taskName, assignedDate, assigneeId, status} = entry;
-    sql:ParameterizedQuery insertQuery = `INSERT INTO Assignments (id, taskName, assignedDate, assigneeId, status) VALUES (
-                                            ${id}, ${taskName}, ${assignedDate}, ${assigneeId}, ${status})`;
+    Assignment {id, taskId, assignedDate, assigneeId, status} = entry;
+    sql:ParameterizedQuery insertQuery = `INSERT INTO Assignments (id, task_id, assignedDate, assigneeId, status) VALUES (
+                                            ${id}, ${taskId}, ${assignedDate}, ${assigneeId}, ${status})`;
     return dbClient->execute(insertQuery);
 }
 
@@ -234,8 +237,8 @@ function selectAllUsers() returns User[]|error {
 }
 
  function updateAssignment(string id, Assignment data) returns sql:ExecutionResult|error {
-    Assignment {taskName, assignedDate, assigneeId, status} = data;
-    sql:ParameterizedQuery updateQuery = `UPDATE Assignments SET taskName = ${taskName}, assignedDate = ${assignedDate}, 
+    Assignment {taskId, assignedDate, assigneeId, status} = data;
+    sql:ParameterizedQuery updateQuery = `UPDATE Assignments SET task_id = ${taskId}, assignedDate = ${assignedDate}, 
                                             assigneeId = ${assigneeId}, status = ${status} WHERE id = ${id}`;
     return dbClient->execute(updateQuery);
 }
