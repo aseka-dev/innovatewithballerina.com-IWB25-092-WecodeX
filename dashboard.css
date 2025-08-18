@@ -36,85 +36,84 @@ body {
 
 /* Navigation Bar */
 .navbar {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
-    padding: 1rem 0;
-    box-shadow: var(--shadow-medium);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white; 
+  padding: 1.15rem 2rem;
+  color: white;
+  
 }
 
-.nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.logo {
+  color: #9700a5;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-left: 9%;
+  
 }
 
-.nav-brand h1 {
-    color: white;
-    font-size: 1.8rem;
-    font-weight: 700;
-    letter-spacing: 0.5px;
+.logo a {
+  text-decoration: none;
+  color: inherit; /* keeps your .logo color */
 }
 
-.nav-menu {
-    display: flex;
-    gap: 2rem;
+
+nav a {
+  color: rgb(7, 7, 7);
+  margin: 0 1rem;
+  text-decoration: none;
+  font-weight: 500;
 }
 
-.nav-link {
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-    transition: var(--transition);
-    padding: 8px 0;
-    position: relative;
+.user-icon {
+  font-size: 1.8rem;
+  margin-left: 1rem;
+  color: black;
 }
 
-.nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: white;
-    transition: width 0.3s ease;
+.navbar nav a:hover {
+  color: #9700a5;
 }
 
-.nav-link:hover::after {
-    width: 100%;
+/* Notification + profile icons */
+.icon-btn, .user-icon {
+  font-size: 1.4rem;
+  color: #9700a5;
+  cursor: pointer;
 }
 
-.nav-link:hover {
-    opacity: 0.9;
+/* Profile dropdown */
+.profile-dropdown {
+  position: relative;
+  display: inline-block;
 }
 
-.nav-actions {
-    display: flex;
-    gap: 1rem;
+.dropdown-menu {
+  position: absolute;
+  top: 40px; /* below icon */
+  right: 0;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  min-width: 160px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  display: none;
+  flex-direction: column;
+  z-index: 1000;
 }
 
-.nav-icon-btn {
-    background: rgba(255, 255, 255, 0.2);
-    border: none;
-    color: white;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: var(--transition);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.dropdown-menu a {
+  padding: 10px 15px;
+  text-decoration: none;
+  color: #333;
+  display: block;
+  transition: background 0.3s;
 }
 
-.nav-icon-btn:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: scale(1.05);
+.dropdown-menu a:hover {
+  background: #f4f4f4;
+  color: #9700a5;
 }
 
 /* Main Content */
@@ -672,6 +671,71 @@ body {
 .member-avatar.active .member-status {
     background: var(--primary-color);
     color: white;
+}
+
+
+/* Footer */
+.footer {
+  background-color: #db5df2;
+  padding: 40px 16px 24px;
+}
+
+.footer-content {
+  display: grid;
+  gap: 32px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  margin-bottom: 24px;
+}
+
+.footer h2 {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+.footer h5 {
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+.footer ul {
+  list-style: none;
+}
+
+.footer a {
+  color: #4a004d;
+  font-size: 14px;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.social-icons a {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.social-icons img {
+  width: 20px;
+  height: 20px;
+  transition: filter 0.3s ease;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  border-top: 1px solid #d5a9ff;
+  padding-top: 16px;
+  font-size: 14px;
+}
+
+.footer-bottom p {
+  margin: 8px 0;
+}
+
+.footer-bottom a {
+  color: #4a004d;
+  font-weight: bold;
 }
 
 /* Responsive adjustments for room members */
