@@ -131,7 +131,7 @@ nav a {
 }
 
 /* Chore Section */
-/* Chore Board base */
+
 .section-header {
   font-size: 1.8rem;
   color: #2c003e;
@@ -142,7 +142,7 @@ nav a {
 
 .chore-section {
   padding: 2rem 1rem;
-  background-color: #d62fdd;
+  background-color: #e0a7e2;
 }
 
 /* Toolbar */
