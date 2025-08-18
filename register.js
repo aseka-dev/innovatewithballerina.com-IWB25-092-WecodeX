@@ -253,10 +253,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // Form submission
-  async function handleFormSubmit(e) {
-    e.preventDefault();
-    
-    if (isSubmitting) return;
+
     
     // Validate all fields
     const isFullNameValid = validateFullName();
@@ -310,7 +307,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 }    
 
-  // Set loading state
+ //Set loading state
   function setLoadingState(loading) {
     if (loading) {
       registerBtn.classList.add('loading');
