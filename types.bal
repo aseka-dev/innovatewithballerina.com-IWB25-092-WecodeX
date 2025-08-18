@@ -4,6 +4,7 @@ type UserInsert record {|
     string name;
     string email;
     string contactNumber;
+    string password;
 |};
 
 type User record {|
@@ -35,23 +36,39 @@ public type Roommate record {
     *RoommateInsert;
 };
 
+type RoommateRequest record {|
+    User user;
+    RoommateInsert roommate;
+|};
+
+type TaskInsert record {|
+   @constraint:String {minLength: 3}
+    string title;    
+    string description;
+    string category;
+|};
+
+public type Task record {
+    readonly string id;
+    *TaskInsert; 
+};
+
 public enum TaskStatus {
     PENDING = "Pending",
     COMPLETED = "Completed",
-    NEGLECTED = "Neglected"
+     NEGLECTED = "Neglected"
 };
 
 public type Assignment record {
     readonly string id;
-    string taskName;
-    string assignedDate;     
-    string assigneeId;     
+    string taskId;
+    string assigneeId;
+    string assignedDate;    
     TaskStatus status = PENDING;
 };
 
 type RotaTaskInsert record {|      
-    string taskName;
-    string[] roommateIds; // IDs of all roommates in this rota 
+    string taskId;
     string startDate; // yyyy-mm-dd   
     string frequency; // daily,weekly,monthly
     int day; // how often to rotate for weekly day of week, for monthly day of month  , 0 for sunday
@@ -61,6 +78,7 @@ type RotaTaskInsert record {|
 type RotaTask record {|
     readonly string id;
     *RotaTaskInsert;
+    string[] roommateIds;
     int currentIndex = 0;
     string currentAssignee;
 |};
@@ -70,29 +88,14 @@ type ExpenseInsert record {|
     decimal amount;
     string[] participants; // All people responsible
     string date; 
-    map<decimal>owes;
-    string status; 
 |};
 
 public type Expense record {
     readonly string id;
     *ExpenseInsert;
-   
+    map<decimal>owes;
+    string status;   
 };
 
 
-// type TaskInsert record {|
-//    @constraint:String {minLength: 3}
-//     string title;    
-    
-// |};
 
-// public type Task record {
-//     readonly string id;
-//     *TaskInsert; 
-// };
-
-// type completedTask record {|
-//     TaskStatus status;
-//     string completedDate;
-// |};
