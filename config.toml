@@ -2,10 +2,14 @@
 port = 3306
 host = "localhost"
 database = "roomsync"
-user = "root"
 password = "0123"
-connectionOptions = {
-    useSSL: false,
-    allowPublicKeyRetrieval: true
-}
+user = "root"
+
+# refreshToken = "1//04laq20LRrOshCgYIARAAGAQSNwF-L9IrKevwgWBcluAsuf47647sl-4arZBU-jYTq3hvpPxNQBOVjBNIVjCl0oZdRYVuhrrLeks"
+# clientId = "14502231286-132oerrcqvsppg80mnjf4is542rcsfhu.apps.googleusercontent.com"
+# clientSecret = "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"
+
+
+
+
 
