@@ -1,8 +1,6 @@
 import ballerina/time;
 import ballerina/uuid;
 
-
-
 function generateSchedule(RotaTask rota, int daysToGenerate) returns error|Assignment[] {
 
     Assignment[] assignments = [];
@@ -12,9 +10,9 @@ function generateSchedule(RotaTask rota, int daysToGenerate) returns error|Assig
     // Convert the UTC time to a Civil time (date and time)
     time:Civil today = time:utcToCivil(currentTime);
     
-   int totalRoommates = rota.roommateIds.length();
-if totalRoommates == 0 {
-    return assignments;
+    int totalRoommates = rota.roommateIds.length();
+        if totalRoommates == 0 {
+            return assignments;
 }
 
 foreach int i in 0..<daysToGenerate {
@@ -51,7 +49,7 @@ foreach int i in 0..<daysToGenerate {
             if (!intArrayContains(roommate.busyDays, rotaWeekday)) {
                 Assignment task = {
                     id: uuid:createRandomUuid(),
-                    taskName: rota.taskName,
+                    taskId: rota.taskId,
                     assignedDate: dateStr,
                     assigneeId: assigneeId
                 };
