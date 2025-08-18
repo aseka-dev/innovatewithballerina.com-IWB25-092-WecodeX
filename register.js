@@ -253,7 +253,10 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // Form submission
-
+  async function handleFormSubmit(e) {
+    e.preventDefault();
+    
+    if (isSubmitting) return;
     
     // Validate all fields
     const isFullNameValid = validateFullName();
