@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Expenses & Bills - RoomSync - Smart roommate organizer">
+  <title>Expenses & Bills - RoomSync</title>
+  <link rel="stylesheet" href="expense.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <script defer src="expense.js"></script>
+</head>
+
+<body>
+  <!-- Loading Overlay -->
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="loading-spinner"></div>
+  </div>
+
+  <!-- Background Animation -->
+  <div class="background-animation">
+    <div class="floating-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+      <div class="shape shape-4"></div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <a href="home.html" class="logo">
+        <span>RoomSync</span>
+      </a>
+      <nav class="nav">
+        <a href="home.html">Home</a>
+        <a href="task.html">Chores</a>
+        <a href="expense.html">Expenses</a>
+        <a href="settings.html">Settings</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="container">
+      <div class="settings-container">
+        
+        <!-- Left Side - Navigation -->
+        <div class="settings-nav">
+          <div class="nav-header">
+            <h2>Expenses & Bills</h2>
+            <p>Manage shared expenses and bills</p>
+          </div>
+          
+          <nav class="settings-menu">
+            <a href="#add-expense" class="nav-item active" data-section="add-expense">
+              <i class="fas fa-plus"></i>
+              <span>Add Expense</span>
+            </a>
+            <a href="#view-expenses" class="nav-item" data-section="view-expenses">
+              <i class="fas fa-list"></i>
+              <span>View Expenses</span>
+            </a>
+            <a href="#summary" class="nav-item" data-section="summary">
+              <i class="fas fa-chart-pie"></i>
+              <span>Summary</span>
+            </a>
+            <a href="#settlements" class="nav-item" data-section="settlements">
+              <i class="fas fa-exchange-alt"></i>
+              <span>Settlements</span>
+            </a>
+          </nav>
+        </div>
+
+        <!-- Right Side - Content -->
+        <div class="settings-content">
+          
+          <!-- Add Expense Section -->
+          <section id="add-expense" class="settings-section active">
+            <div class="section-header">
+              <h3>Add New Expense</h3>
+              <p>Record a new shared expense or bill</p>
+            </div>
+            
+            <form class="settings-form" id="addExpenseForm">
+              <div class="form-group">
+                <label for="expenseTitle" class="form-label">
+                  <i class="fas fa-tag"></i>
+                  Expense Title
+                </label>
+                <input type="text" id="expenseTitle" name="expenseTitle" class="form-input" placeholder="e.g., Groceries, Utilities, Internet" required>
+              </div>
+
+              <div class="form-group">
+                <label for="expenseDescription" class="form-label">
+                  <i class="fas fa-align-left"></i>
+                  Description
+                </label>
+                <textarea id="expenseDescription" name="expenseDescription" class="form-textarea" rows="3" placeholder="Describe the expense..."></textarea>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="expenseAmount" class="form-label">
+                    <i class="fas fa-rupee-sign"></i>
+                    Amount
+                  </label>
+                  <input type="number" id="expenseAmount" name="expenseAmount" class="form-input" placeholder="0.00" step="0.01" min="0" required>
+                </div>
+                <div class="form-group">
+                  <label for="expenseCategory" class="form-label">
+                    <i class="fas fa-folder"></i>
+                    Category
+                  </label>
+                  <select id="expenseCategory" name="expenseCategory" class="form-select" required>
+                    <option value="">Select Category</option>
+                    <option value="groceries">Groceries</option>
+                    <option value="utilities">Utilities</option>
+                    <option value="internet">Internet</option>
+                    <option value="rent">Rent</option>
+                    <option value="cleaning">Cleaning Supplies</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="paidBy" class="form-label">
+                    <i class="fas fa-user"></i>
+                    Paid By
+                  </label>
+                  <select id="paidBy" name="paidBy" class="form-select" required>
+                    <option value="">Select Person</option>
+                    <option value="john">John Doe</option>
+                    <option value="jane">Jane Smith</option>
+                    <option value="mike">Mike Johnson</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="expenseDate" class="form-label">
+                    <i class="fas fa-calendar"></i>
+                    Date
+                  </label>
+                  <input type="date" id="expenseDate" name="expenseDate" class="form-input" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="splitType" class="form-label">
+                  <i class="fas fa-users"></i>
+                  Split Type
+                </label>
+                <select id="splitType" name="splitType" class="form-select" required>
+                  <option value="equal" selected>Equal Split</option>
+                  <option value="percentage">Percentage Based</option>
+                  <option value="custom">Custom Amounts</option>
+                </select>
+              </div>
+
+              <button type="submit" class="btn-primary" id="addExpenseBtn">
+                <span class="btn-text">Add Expense</span>
+                <div class="btn-loader">
+                  <div class="spinner"></div>
+                </div>
+              </button>
+            </form>
+          </section>
+
+          <!-- View Expenses Section -->
+          <section id="view-expenses" class="settings-section">
+            <div class="section-header">
+              <h3>All Expenses</h3>
+              <p>View and manage existing expenses</p>
+            </div>
+            
+            <div class="expenses-toolbar">
+              <div class="toolbar-left">
+                <label for="categoryFilter">Filter:</label>
+                <select id="categoryFilter" class="filter-select">
+                  <option value="all">All Categories</option>
+                  <option value="groceries">Groceries</option>
+                  <option value="utilities">Utilities</option>
+                  <option value="internet">Internet</option>
+                  <option value="rent">Rent</option>
+                  <option value="cleaning">Cleaning</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="toolbar-right">
+                <button class="btn-secondary" id="exportBtn">
+                  <i class="fas fa-download"></i>
+                  Export
+                </button>
+              </div>
+            </div>
+            
+            <div class="expenses-list" id="expensesList">
+              <!-- Expenses will be populated here -->
+            </div>
+          </section>
+
+          <!-- Summary Section -->
+          <section id="summary" class="settings-section">
+            <div class="section-header">
+              <h3>Expense Summary</h3>
+              <p>Overview of all shared expenses</p>
+            </div>
+            
+            <div class="summary-grid">
+              <div class="summary-card">
+                <div class="summary-icon">
+                  <i class="fas fa-coins"></i>
+                </div>
+                <div class="summary-content">
+                  <h4>Total Expenses</h4>
+                  <div class="summary-amount" id="totalExpenses">Rs. 0.00</div>
+                </div>
+              </div>
+              
+              <div class="summary-card">
+                <div class="summary-icon">
+                  <i class="fas fa-user-friends"></i>
+                </div>
+                <div class="summary-content">
+                  <h4>Per Person</h4>
+                  <div class="summary-amount" id="perPerson">Rs. 0.00</div>
+                </div>
+              </div>
+              
+              <div class="summary-card">
+                <div class="summary-icon">
+                  <i class="fas fa-calendar"></i>
+                </div>
+                <div class="summary-content">
+                  <h4>This Month</h4>
+                  <div class="summary-amount" id="thisMonth">Rs. 0.00</div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="category-breakdown">
+              <h4>Category Breakdown</h4>
+              <div class="breakdown-list" id="categoryBreakdown">
+                <!-- Category breakdown will be populated here -->
+              </div>
+            </div>
+          </section>
+
+          <!-- Settlements Section -->
+          <section id="settlements" class="settings-section">
+            <div class="section-header">
+              <h3>Payment Settlements</h3>
+              <p>Track who owes what to whom</p>
+            </div>
+            
+            <div class="settlements-info">
+              <div class="settlements-summary">
+                <h4>Current Balances</h4>
+                <div class="balances-list" id="balancesList">
+                  <!-- Balances will be populated here -->
+                </div>
+              </div>
+              
+              <div class="settlement-actions">
+                <button class="btn-primary" id="markPaidBtn">
+                  <i class="fas fa-check"></i>
+                  Mark as Paid
+                </button>
+                <button class="btn-secondary" id="resetBalancesBtn">
+                  <i class="fas fa-undo"></i>
+                  Reset All
+                </button>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 RoomSync. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="#privacy">Privacy Policy</a>
+        <a href="#terms">Terms of Service</a>
+        <a href="#help">Help</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Success Modal -->
+  <div class="modal" id="successModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <i class="fas fa-check-circle success-icon"></i>
+        <h3>Success!</h3>
+      </div>
+      <p id="successMessage">Operation completed successfully.</p>
+      <button class="btn-primary" onclick="closeModal('successModal')">Continue</button>
+    </div>
+  </div>
+
+  <!-- Edit Expense Modal -->
+  <div class="modal" id="editExpenseModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <i class="fas fa-edit"></i>
+        <h3>Edit Expense</h3>
+      </div>
+      <form class="expense-form" id="editExpenseForm">
+        <input type="hidden" id="editExpenseId" name="expenseId">
+        
+        <div class="form-group">
+          <label for="editExpenseTitle" class="form-label">
+            <i class="fas fa-tag"></i>
+            Expense Title
+          </label>
+          <input type="text" id="editExpenseTitle" name="expenseTitle" class="form-input" required>
+        </div>
+
+        <div class="form-group">
+          <label for="editExpenseDescription" class="form-label">
+            <i class="fas fa-align-left"></i>
+            Description
+          </label>
+          <textarea id="editExpenseDescription" name="expenseDescription" class="form-textarea" rows="3"></textarea>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="editExpenseAmount" class="form-label">
+              <i class="fas fa-rupee-sign"></i>
+              Amount
+            </label>
+            <input type="number" id="editExpenseAmount" name="expenseAmount" class="form-input" step="0.01" min="0" required>
+          </div>
+          <div class="form-group">
+            <label for="editExpenseCategory" class="form-label">
+              <i class="fas fa-folder"></i>
+              Category
+            </label>
+            <select id="editExpenseCategory" name="expenseCategory" class="form-select" required>
+              <option value="groceries">Groceries</option>
+              <option value="utilities">Utilities</option>
+              <option value="internet">Internet</option>
+              <option value="rent">Rent</option>
+              <option value="cleaning">Cleaning Supplies</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="editPaidBy" class="form-label">
+              <i class="fas fa-user"></i>
+              Paid By
+            </label>
+            <select id="editPaidBy" name="paidBy" class="form-select" required>
+              <option value="john">John Doe</option>
+              <option value="jane">Jane Smith</option>
+              <option value="mike">Mike Johnson</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="editExpenseDate" class="form-label">
+              <i class="fas fa-calendar"></i>
+              Date
+            </label>
+            <input type="date" id="editExpenseDate" name="expenseDate" class="form-input" required>
+          </div>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="btn-secondary" onclick="closeModal('editExpenseModal')">Cancel</button>
+          <button type="submit" class="btn-primary">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
