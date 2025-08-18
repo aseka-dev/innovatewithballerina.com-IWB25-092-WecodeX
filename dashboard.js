@@ -8,6 +8,26 @@ document.addEventListener('DOMContentLoaded', function() {
     setupEventListeners();
 });
 
+// nav part
+
+  const profileIcon = document.getElementById("profileIcon");
+  const dropdownMenu = document.getElementById("dropdownMenu");
+
+  // Toggle dropdown when clicking profile icon
+  profileIcon.addEventListener("click", () => {
+    dropdownMenu.style.display = 
+      dropdownMenu.style.display === "flex" ? "none" : "flex";
+  });
+
+  // Close dropdown if clicking outside
+  window.addEventListener("click", (e) => {
+    if (!profileIcon.contains(e.target) && !dropdownMenu.contains(e.target)) {
+      dropdownMenu.style.display = "none";
+    }
+  });
+
+//
+
 function initializeDashboard() {
     // Set default room to Room 1 (only room available)
     currentRoom = 1;
