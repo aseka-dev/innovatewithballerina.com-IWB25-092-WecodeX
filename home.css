@@ -185,6 +185,10 @@ a {
   flex-wrap: wrap;
   animation: fadeInUp 1s ease 0.6s both;
 }
+.cta-buttons a {
+  text-decoration: none;
+  color: inherit; /* keeps your .logo color */
+}
 
 /* Enhanced CTA Buttons */
 .register-btn {
@@ -377,7 +381,122 @@ a {
   transform: translateY(-2px);
 }
 
-/* Enhanced Footer */
+/* About */
+.about {
+  padding: 80px 0;
+  background: #ffffff;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.about-media img {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+}
+
+.about-copy h4 {
+  font-size: 22px;
+  color: #2c003e;
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.about-copy p {
+  color: #6b6470;
+  margin-bottom: 18px;
+}
+
+.values-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 14px 0 22px;
+  list-style: none;
+  padding: 0;
+}
+
+.values-list li {
+  padding: 8px 14px;
+  border: 1.5px solid #9700a5;
+  color: #9700a5;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 14px;
+  background: linear-gradient(135deg, #f6c1fb22, #fdeafc22);
+}
+
+.stats {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.stat {
+  background: linear-gradient(135deg, #f5e1fb, #fdeafc);
+  border: 1px solid #e8d6f3;
+  border-radius: 14px;
+  padding: 16px 18px;
+  min-width: 160px;
+}
+
+.stat .num {
+  display: block;
+  font-size: 24px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #9700a5, #b43dc0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 6px;
+}
+
+.stat .label {
+  color: #6b6470;
+  font-size: 13px;
+}
+
+/* Why Choose Us */
+.why-choose-us {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #fff, #fdf7ff);
+}
+
+.reasons-grid {
+  display: grid;
+  gap: 32px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Emoji icon circle to match feature-card look */
+.card-icon .icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #d6a8ff;
+  font-size: 24px;
+}
+
+/* Responsive tweaks for About */
+@media (max-width: 992px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/*  Footer */
 .footer {
   background: linear-gradient(135deg, #db5df2, #e8a0f0);
   padding: 60px 0 30px;
