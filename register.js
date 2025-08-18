@@ -276,50 +276,39 @@ document.addEventListener('DOMContentLoaded', function() {
     setLoadingState(true);
     
     try {
-      // Simulate API call
-      await simulateRegistration();
-      
-      // Show success
-      showModal(successModal);
-      
-    } catch (error) {
-      // Show error
-      document.getElementById('errorMessage').textContent = error.message;
-      showModal(errorModal);
-      
-    } finally {
-      // Reset submission state
-      isSubmitting = false;
-      setLoadingState(false);
-    }
-  }
+      const userData = {
+      name: fullNameInput.value.trim(),
+      email: emailInput.value.trim(),
+      contacatNumber: phoneInput.value.trim(),
+      password: passwordInput.value
+    };
 
-  // Simulate registration API call
-  function simulateRegistration() {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        const fullName = fullNameInput.value.trim();
-        const email = emailInput.value.trim();
-        const phone = phoneInput.value.trim();
-        const password = passwordInput.value;
-        
-        // Demo validation (replace with actual API call)
-        if (fullName && email && phone && password) {
-          resolve({ 
-            success: true, 
-            user: { 
-              fullName, 
-              email, 
-              phone,
-              id: 'user_' + Date.now() 
-            } 
-          });
-        } else {
-          reject(new Error('Please fill in all required fields'));
-        }
-      }, 1500);
+    const response = await fetch("http://localhost:8085/roomsync/user", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(userData)
     });
+
+    if (!response.ok) {
+      throw new Error("Failed to register user");
+    }
+
+    const result = await response.json();
+    console.log("✅ User registered:", result);
+
+    // Show success
+    showModal(successModal);
+
+  } catch (error) {
+    console.error("❌ Registration error:", error);
+    document.getElementById('errorMessage').textContent = error.message;
+    showModal(errorModal);
+
+  } finally {
+    isSubmitting = false;
+    setLoadingState(false);
   }
+}      
 
   // Set loading state
   function setLoadingState(loading) {
