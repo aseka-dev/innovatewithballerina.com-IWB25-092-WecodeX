@@ -275,7 +275,7 @@ document.addEventListener('DOMContentLoaded', function() {
     isSubmitting = true;
     setLoadingState(true);
     
-    try {
+      try {
       const userData = {
       name: fullNameInput.value.trim(),
       email: emailInput.value.trim(),
@@ -308,7 +308,7 @@ document.addEventListener('DOMContentLoaded', function() {
     isSubmitting = false;
     setLoadingState(false);
   }
-}      
+}    
 
   // Set loading state
   function setLoadingState(loading) {
