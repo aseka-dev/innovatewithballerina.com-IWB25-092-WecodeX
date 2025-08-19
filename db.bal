@@ -22,8 +22,11 @@ final mysql:Client dbClient = check new(
                                             ${id}, ${name}, ${email}, ${contactNumber}, ${password})`;
     return dbClient->execute(insertQuery);
 }
-
-function selectUser(string email) returns User|sql:Error {
+function selectUser(string email) returns string|sql:Error {
+    sql:ParameterizedQuery selectQuery = `SELECT password FROM Users WHERE email = ${email}`;
+    return dbClient->queryRow(selectQuery);
+}
+function selectUserDetail(string email) returns User|sql:Error {
     sql:ParameterizedQuery selectQuery = `SELECT * FROM Users WHERE email = ${email}`;
     return dbClient->queryRow(selectQuery);
 }
@@ -251,9 +254,13 @@ function insertTask(Task entry) returns  sql:ExecutionResult|error {
 // ========== EXPENSE OPERATIONS ==========
 
  function insertExpense(Expense entry) returns sql:ExecutionResult|error {
-    Expense {id, payer,amount, participants, date, owes,status} = entry;
-    sql:ParameterizedQuery insertQuery = `INSERT INTO Expenses (id, payer,amount, participants, date, owes,status) VALUES (
-                                            ${id}, ${payer}, ${amount}, ${participants},${date},${owes},${status})`;
+    Expense {id, title, description, payer,amount, participants, addedDate, owes,status} = entry;
+
+    json participantsJson = <json>participants;
+    string participantsJsonString = participantsJson.toJsonString();
+
+    sql:ParameterizedQuery insertQuery = `INSERT INTO Expenses (id, title,description, payer,amount, participants, date, owes,status) VALUES (
+                                            ${id}, ${title},${description},${payer}, ${amount}, ${participantsJsonString},${addedDate},${owes},${status})`;
     return dbClient->execute(insertQuery);
 }
 
@@ -276,7 +283,7 @@ function insertTask(Task entry) returns  sql:ExecutionResult|error {
 
 
 isolated function updateExpense(string id, ExpenseInsert data) returns sql:ExecutionResult|error {
-    ExpenseInsert { payer, amount, participants, date } = data;
+    ExpenseInsert { payer, amount, participants, addedDate } = data;
 
     json participantsJson = <json>participants;
     string participantsJsonString = participantsJson.toJsonString();
@@ -286,7 +293,7 @@ isolated function updateExpense(string id, ExpenseInsert data) returns sql:Execu
          SET payer = ${payer}, 
              amount = ${amount}, 
              participants = ${participantsJsonString}, 
-             date = ${date} 
+             date = ${addedDate} 
          WHERE id = ${id}`;
 
     return dbClient->execute(updateQuery);
