@@ -78,26 +78,36 @@ Base URL: http://localhost:9090
 
 Example: POST /user to register a new user.
 
-### API Endpoints
-# Users
+## API Endpoints
 
+### Users
 POST /user – Create a new user
 
 GET /user?email={email} – Get user by email
 
 POST /login – User login
 
-# Rooms
-
+### Rooms
 POST /room – Create a new room
 
 GET /room/{roomCode} – Get room details
 
-# Roommates
-
+### Roommates
 POST /roommates – Add roommates to a room
 
-(Add more endpoints as your backend expands)
+### Tasks
+POST /tasks – Create a new task
+
+Get /task{id} - Get task details
+
+### RotaTasks
+POST /rotatasks – Create a new rota for a task
+
+### Assignments
+POST /assignments – Assign a new task to an assignee
+
+### Expenses
+POST /expenses – Add a new expense
 
 ## Testing
 
