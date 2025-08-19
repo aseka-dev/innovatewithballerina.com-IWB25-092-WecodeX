@@ -11,6 +11,12 @@ type User record {|
     readonly string id; 
     *UserInsert;          
 |};
+
+type LoginRequest record {|
+    string email;
+    string password;
+|};
+
 type RoomInsert record {|  
     string ownerId;
     string name;         
@@ -84,10 +90,12 @@ type RotaTask record {|
 |};
 
 type ExpenseInsert record {|
+    string title;
+    string description;
     string payer;
     decimal amount;
     string[] participants; // All people responsible
-    string date; 
+    string addedDate; 
 |};
 
 public type Expense record {
